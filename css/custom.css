@@ -1,0 +1,131 @@
+/* ul.slider{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    height: 350px;
+}
+
+
+ul li.slide{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-size: cover;
+  background-image: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 10% 8%;
+}
+
+ul li.slide:nth-child(1){
+    background-image: url(../images/bk1.jpg);
+}
+ul li.slide:nth-child(2){
+    background-image: url(../images/bk2.jpg);
+}
+
+ul li.slide:nth-child(3){
+    background-image: url(../images/bk3.jpg);
+}
+ul li.slide:nth-child(4){
+    background-image: url(../images/bk4.jpg);
+}
+
+ul li.slide.active{
+    opacity: 1;
+}
+
+
+ul li.slide .content{
+    width: 45%;
+    height: 150%;
+    background-color: rgba(255, 255, 255, 0.7);
+    float: right;
+    padding: 5px 20px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.no-padding-sides{
+    padding: 0;
+} */
+
+
+
+
+
+
+
+
+
+
+ul.slider{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    height: 350px;
+}
+ul li.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10% 8%;
+    transition: opacity 2s;
+    /* background-attachment: fixed; */
+}
+ul li.slide:nth-child(1){
+    background-image: url(../images/bk1.jpg);
+}
+ul li.slide:nth-child(2){
+    background-image: url(../images/bk2.jpg);
+}
+ul li.slide:nth-child(3){
+    background-image: url(../images/bk3.jpg);
+}
+ul li.slide:nth-child(4){
+    background-image: url(../images/bk4.jpg);
+}
+ul li.slide.active{
+    opacity: 1;
+}
+ul li.slide .content{
+    width: 45%;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    float: right;
+    padding: 5px 20px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+no-padding-sides{
+    padding: 0;
+}
+
+.book-cover{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+#bookModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    padding: 10% 0;
+    display: none;
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLibrary</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/custom.css"/>
+</head>
+<body onload="render()">
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="index.html">
+                <h1>Codebits eLibrary</h1>
+            </a>
+        </div>
+        <div class="col-md-8">
+            <span class="btn btn-primary  float-right mt-2" id="addBtn">Add new Book</span>
+        </div>
+    </div>
+</section>
+
+ <!-- custom modalfor adding new book -->
+
+
+
+
+ <section id="bookModal" class="container-fluid">
+     <div class="row">
+         <div class="col-md-4 col-lg-3"></div>
+         <div class="col-md-4 col-lg-6">
+             <form action="">
+                 <div class="form-group">
+                     <input type="text" class="form-control" title="title" id="txtTitle" placeholder="book title" autofocus />             
+                </div>
+               
+               <div class="form-group">
+                <input type="text" class="form-control" id="txtPub" placeholder="book publisher" />             
+              </div>
+             
+              <div class="form-row">
+                  <!-- new start -->
+                  <div class="form-group col-md-6">
+                    <input type="number" class="form-control" id="bookPrice" placeholder="price" />             
+                 </div>
+                 <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="bookAuthor" placeholder="Book Author" />             
+               </div>
+               <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="language" placeholder="Language" />             
+             </div>
+             <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="bookCountry" placeholder="Country" /> 
+                         
+           </div>
+               <!-- new end -->
+              
+               <div class="form-group col-md-6">
+                <input type="number" class="form-control" id="txtPages" placeholder="pages" />             
+             </div>
+             <div class="form-group col-md-6">
+                <input type="number" class="form-control" id="txtPubYear" placeholder="Year of Publishing " />             
+           </div>
+           <div class="form-group col-md-12">
+            <input type="text" class="form-control" id="txtCoverURL" placeholder="Book Cover Image URL Book " />             
+             </div>
+           <div class="form-group col-md-12">
+            <textarea class="form-control" id="bookExtract" placeholder="Short Text Extract"  rows="3"></textarea>  
+           </div>
+              </div>
+             
+              <div class="form-group">
+                  <input type="button" class="form-control btn btn-primary btn-block" id="newBookBtn" value="Add Book" />
+              </div>
+              <div class="form-group">
+                <input type="button" class="form-control btn btn-primary btn-block" id="cancelBtn" value="Cancel" />
+            </div>
+             </form>
+         </div>
+         <div class="col-md-4 col-lg-3"></div>
+     </div>
+ </section>
+ <!-- custom modalfor adding new book -->
+
+
+
+
+
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 no-padding-sides">
+            <ul class="slider">
+                <li class="slide active">
+                    <div class="content">
+                        <h1>Exercise your brain</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
+                    </div>
+                </li>
+
+                <li class="slide">
+                  <div class="content">
+                      <h1>Build your future</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
+                  </div>
+              </li>
+
+              <li class="slide">
+                  <div class="content">
+                      <h1>Achieve your goal</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
+                  </div>
+              </li>
+
+              <li class="slide">
+                  <div class="content">
+                      <h1>Upskill yourself through books</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
+                  </div>
+              </li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+  <section class="container">
+      <h1 class="text-center">Available Books</h1>
+      <div class="row" id="bookRow">
+        <!-- <div class="col-md-4">
+            <div class="card">
+               <div class="book-cover">
+                <img src="images/bk1.jpg" class="card-img img-fluid"/>
+               </div>
+                <div class="card-body">
+                    <h3 class="card-title">Dreams from my father</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
+                    <span class="btn btn-primary">Read Book</span>
+                </div>          
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="book-cover">
+                    <img src="images/bk2.jpg" class="card-img img-fluid"/>
+                   </div>
+                <div class="card-body">
+                    <h3 class="card-title">Dreams from my father</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
+                    <span class="btn btn-primary">Read Book</span>
+                </div>          
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="book-cover">
+                    <img src="images/bk3.jpg" class="card-img img-fluid"/>
+                   </div>
+                <div class="card-body">
+                    <h3 class="card-title">Dreams from my father</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
+                    <span class="btn btn-primary">Read Book</span>
+                </div>          
+              </div>
+        </div> -->
+      </div>
+     
+  </section>
+
+
+
+
+
+
+
+    <!-- <script src="./js/custom.js"></script> -->
+    <script src="./js/newjs.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+</body>
+</html>

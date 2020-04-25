@@ -10,7 +10,10 @@ function changeSlide() {
 const addBtn = document.getElementById('addBtn');
 const bookModal = document.getElementById('bookModal');
 const cancelBtn = document.querySelector('#cancelBtn');
+const detailsModal = document.querySelector('#modalBookDetails');
+const closeModalDetails = document.querySelector('#closeModalBookDetails');
 addBtn.addEventListener('click', showModal);
+// closeModalDetails.addEventListener('click', detailsHide);
 // bookModal.addEventListener('click', hideModal)
 cancelBtn.addEventListener('click', hideModal);
 
@@ -19,6 +22,10 @@ function showModal() {
 }
 function hideModal() {
 	bookModal.style.display = 'none';
+}
+
+function detailsHide(){
+	detailsModal.style.display = 'none';
 }
 // const elibrary = (function (){
 //     let library =[];
@@ -111,10 +118,10 @@ function render() {
                 </div>
 				<div class="card-body">
                     <h5 class="card-title">Book Title: ${booksArray[i].title}</h5>
-                    <h6 class="card-title">Book Author :${booksArray[i].author}</h6>
-                    <h6 class="card-title">Price:&#8358;${booksArray[i].price}</h6>
-                    <h6 class="card-title">Published :${booksArray[i].yearPub}</h6>
-                    <span class="btn btn-primary">View Details</span>
+                    <h6 class="card-title">Book Author: ${booksArray[i].author}</h6>
+                    <h6 class="card-title">Price: &#8358;${booksArray[i].price}</h6>
+                    <h6 class="card-title">Published : ${booksArray[i].yearPub}</h6>
+                    <span class="btn btn-primary" onclick="displayBookDetails(${i})">View Details</span>
                     <span class="btn btn-primary" onclick="deleteBook(${i})" >Delete Book</span>
                 </div>
             </div>
@@ -137,6 +144,37 @@ function saveBook(bookObj) {
 		alert('New book added to the eLibrary');
 	}
 }
+
+function displayBookDetails(bookId){
+  if(localStorage.getItem('books') !== null){
+	  booksArray = JSON.parse(localStorage.getItem('books'));
+	  booksArray[bookId];
+	  console.log(booksArray[bookId]);
+	  detailsModal.innerHTML += `<div class="col-md-12 text-white">
+	  <h3>Short Extract: ${booksArray[bookId].extract}</h3>
+	  <h3>No Pages:${booksArray[bookId].pages} </h3>
+	  <h3>Publisher:${booksArray[bookId].pub}</h3>
+	  <h3>Language:${booksArray[bookId].language}</h3>
+	  <h3>Country:${booksArray[bookId].country}</h3>
+	  <h3>Awards</h3>
+	  <button class="btn btn-danger">close</button>
+	</div>`;
+	  detailsModal.style.display = 'block';
+  }
+}
+
+
+// author: "1111"
+// country: "london"
+// coverImgURL: "https://res.cloudinary.com/codewit/image/upload/v1587839210/portfolo_chkd0q.jpg"
+// extract: "short text"
+// language: "Nigeria"
+// pages: "8"
+// price: "122"
+// pub: "abayomi"
+// read: 0
+// title: "tales by moonligth"
+// yearPub: "1290"
 
 function deleteBook(bookID) {
 	if (localStorage.getItem('books') !== null) {

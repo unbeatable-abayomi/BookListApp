@@ -1,12 +1,5 @@
-const slides = document.querySelectorAll('ul li.slide');
-let currentSlide = 0;
-let interval = setInterval(changeSlide, 8000);
-function changeSlide() {
-	slides[currentSlide].setAttribute('class', 'slide');
-	currentSlide = (currentSlide + 1) % slides.length;
-	slides[currentSlide].setAttribute('class', 'slide active');
-}
-// elibrary
+
+
 const addBtn = document.getElementById('addBtn');
 const bookModal = document.getElementById('bookModal');
 const cancelBtn = document.querySelector('#cancelBtn');
@@ -24,17 +17,10 @@ function hideModal() {
 	bookModal.style.display = 'none';
 }
 
-function detailsHide(){
+function closeModalBox(){
 	detailsModal.style.display = 'none';
 }
-// const elibrary = (function (){
-//     let library =[];
-//     let bookRow = null;
-//     function initialize(HTMLElement){
-//         bookRow = document.getElementById(HTMLElement)
-//     }
-// })();
-// get all element of interest
+
 const newBookBtn = document.getElementById('newBookBtn');
 const txtTitle = document.getElementById('txtTitle');
 const txtPub = document.getElementById('txtPub');
@@ -49,9 +35,10 @@ const bukAuthor = document.getElementById('bookAuthor');
 const bukLanguge = document.getElementById('language');
 const bukCountry = document.getElementById('bookCountry');
 const bukExtract = document.getElementById('bookExtract');
+//const authoroBook = document.getElementById('authorofBook');
 // new inputs end
 newBookBtn.addEventListener('click', addToELibrary);
-const elibrary = [];
+
 function Book(title, pub, pages, yearPub, coverImgURL,bokPrice,bokAuthor,bokLanguage,bokCountry,bokExtract) {
 	this.title = title;
 	this.pub = pub;
@@ -63,7 +50,7 @@ function Book(title, pub, pages, yearPub, coverImgURL,bokPrice,bokAuthor,bokLang
 	this.language=bokLanguage;
 	this.country=bokCountry;
 	this.extract=bokExtract;
-	this.read = 0;
+	this.read = "red";
 }
 
 function addToELibrary() {
@@ -79,24 +66,8 @@ function addToELibrary() {
 		let country = bukCountry.value;
 		let extract = bukExtract.value;
 		let book = new Book(title, pub, pages, yearPub, coverImgURL,price,author,language,country,extract);
-		// elibrary.push(book);
 		saveBook(book);
 		location.reload();
-		bookRow.innerHTML += `<div class="col-md-4">
-        <div class="card">
-            <div class="book-cover">
-                <img src="${booksArray[i].coverImgURL}" class="card-img img-fluid">
-            </div>
-            <div class="card-body">
-				<h3 class="card-title">${booksArray[i].title}</h3>
-			
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Voluptates, culpa laborum!</p>
-                <span class="btn btn-primary">Read Book</span>
-                <span class="btn btn-primary" onclick="deleteBook(${booksArray[i].pages})" >Delete Book</span>
-            </div>
-        </div>
-    </div>`;
 	} else {
 		alert('Sorry, all fields are required');
 	}
@@ -111,20 +82,38 @@ function render() {
 	if (localStorage.getItem('books') != null) {
 		let booksArray = JSON.parse(localStorage.getItem('books'));
 		for (var i = 0; i < booksArray.length; i++) {
-			bookRow.innerHTML += `<div class="col-md-4">
-            <div class="card">
-                <div class="book-cover">
-                    <img src="${booksArray[i].coverImgURL}" class="card-img img-fluid">
-                </div>
-				<div class="card-body">
-                    <h5 class="card-title">Book Title: ${booksArray[i].title}</h5>
-                    <h6 class="card-title">Book Author: ${booksArray[i].author}</h6>
-                    <h6 class="card-title">Price: &#8358;${booksArray[i].price}</h6>
-                    <h6 class="card-title">Published : ${booksArray[i].yearPub}</h6>
-                    <span class="btn btn-primary" onclick="displayBookDetails(${i})">View Details</span>
-                    <span class="btn btn-primary" onclick="deleteBook(${i})" >Delete Book</span>
-                </div>
-            </div>
+			bookRow.innerHTML += `<div class="col-md-4 all-details mt-5">
+			
+			<div class="row">
+			  <div class="col-md-6">
+			    <div class="book-cover">
+			  <img src="${booksArray[i].coverImgURL}" onclick="displayBookDetails(${i})" class="card-img images img-fluid">
+			  <span class="all-buttons btn btn-default" onclick="displayBookDetails(${i})">Details</span>
+			  <button class="all-buttons favoriteButton mt-2" style="background-color:${booksArray[i].read}";>fav</button>
+		         </div>
+			  </div>
+			  <div class="col-md-6">
+			 
+                    <p style="color:${booksArray[i].read}";  class="card-title text-white">Title: ${booksArray[i].title}</p>
+                    <p class="card-title text-white" id="authorofBook">Author: ${booksArray[i].author}</p>
+                    <h6 class="card-title text-white">Price: &#8358;${booksArray[i].price}</h6>
+					<h6 class="card-title text-white">Published : ${booksArray[i].yearPub}</h6>
+					<div class="delete_details">
+				
+					<span class="all-buttons btn btn-default" onclick="deleteBook(${i})" >Delete</span>
+					</div>
+
+                    
+
+
+					
+				
+            
+			  </div>
+			</div>
+               
+				
+           
         </div>`;
 		}
 	} else {
@@ -145,36 +134,27 @@ function saveBook(bookObj) {
 	}
 }
 
+
 function displayBookDetails(bookId){
   if(localStorage.getItem('books') !== null){
 	  booksArray = JSON.parse(localStorage.getItem('books'));
 	  booksArray[bookId];
 	  console.log(booksArray[bookId]);
-	  detailsModal.innerHTML += `<div class="col-md-12 text-white">
+	  detailsModal.innerHTML = `<div class="col-md-12 text-white text-center">
 	  <h3>Short Extract: ${booksArray[bookId].extract}</h3>
-	  <h3>No Pages:${booksArray[bookId].pages} </h3>
+	 
 	  <h3>Publisher:${booksArray[bookId].pub}</h3>
 	  <h3>Language:${booksArray[bookId].language}</h3>
+	  <h3>No Pages:${booksArray[bookId].pages} </h3>
 	  <h3>Country:${booksArray[bookId].country}</h3>
 	  <h3>Awards</h3>
-	  <button class="btn btn-danger">close</button>
+	  <span><i class="fas fa-window-close" onClick="closeModalBox()"></i></span>
 	</div>`;
 	  detailsModal.style.display = 'block';
   }
 }
 
 
-// author: "1111"
-// country: "london"
-// coverImgURL: "https://res.cloudinary.com/codewit/image/upload/v1587839210/portfolo_chkd0q.jpg"
-// extract: "short text"
-// language: "Nigeria"
-// pages: "8"
-// price: "122"
-// pub: "abayomi"
-// read: 0
-// title: "tales by moonligth"
-// yearPub: "1290"
 
 function deleteBook(bookID) {
 	if (localStorage.getItem('books') !== null) {

@@ -1,66 +1,47 @@
-/* ul.slider{
-    position: relative;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    height: 350px;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Spartan:wght@300&display=swap');
+
+body{
+    background-image: linear-gradient(to left top, #0e121a, #101625, #131a31, #191d3c, #211f46);
 }
 
 
-ul li.slide{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  background-size: cover;
-  background-image: center;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding-top: 10% 8%;
+.images{
+    height: 150px;
+}
+#modalBookDetails,
+#bookModal{
+    font-family: 'Cinzel', serif;
 }
 
-ul li.slide:nth-child(1){
-    background-image: url(../images/bk1.jpg);
+h1{
+    font-family: 'Spartan', sans-serif;
 }
-ul li.slide:nth-child(2){
-    background-image: url(../images/bk2.jpg);
+.card-title{
+     font-family: 'Cinzel', serif;
+     color: #8891da;
 }
+#addBtn{
+    font-family: 'Cinzel', serif;
+}
+.all-details{
+    /* margin: 1px; */
+    padding: .8rem .8rem .8rem 1rem;
+    color: #4d5591;
+    -webkit-box-shadow: 10px 9px 37px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 9px 37px 1px rgba(56, 54, 54, 0.75);
+    box-shadow: 10px 9px 37px 1px rgba(0,0,0,0.75)
 
-ul li.slide:nth-child(3){
-    background-image: url(../images/bk3.jpg);
-}
-ul li.slide:nth-child(4){
-    background-image: url(../images/bk4.jpg);
-}
-
-ul li.slide.active{
-    opacity: 1;
-}
-
-
-ul li.slide .content{
-    width: 45%;
-    height: 150%;
-    background-color: rgba(255, 255, 255, 0.7);
-    float: right;
-    padding: 5px 20px;
-    border-top-left-radius: 30px;
-    border-bottom-right-radius: 30px;
 }
 
-.no-padding-sides{
-    padding: 0;
-} */
-
-
-
-
-
-
-
-
+.all-buttons{
+    background-color: #8891da;  
+}
+.favoriteButton{
+    width: 80px;
+    border-radius: 5px;
+    padding: .4rem;
+    border: none;
+}
 
 
 ul.slider{
@@ -124,19 +105,23 @@ no-padding-sides{
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(27, 9, 9, 0.822);
     z-index: 999;
     padding: 10% 0;
     display: none;
 }
 #modalBookDetails{
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    top: 10%;
+    left: 30%;
+    width: 50%;
+    height: 60vh;
+    background-color: rgba(27, 9, 9, 0.822);
     z-index: 999;
     padding: 10% 0;
-    display: none;  
+    display: none; 
+    border-radius: 20px; 
+}
+.fas{
+    font-size: 30px;
 }

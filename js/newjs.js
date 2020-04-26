@@ -53,7 +53,7 @@ function addToELibrary() {
 	}
 }
 function validateInput() {
-	if ($("#txtTitle").val() == '' || $("#txtPub").val() == '' || $("#txtPages").val() == '' || $("#txtCoverURL").val() == '') {
+	if ($("#txtTitle").val() == '' || $("#txtPub").val() == '' || $("#txtPages").val() == '' || $("#txtCoverURL").val() == '' || $("#txtPubYear").val()== "" || $("#bookPrice").val() =="" || $("#bookAuthor").val() ==""||$("#language").val() =="") {
 		return false;
 	}
 	return true;

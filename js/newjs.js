@@ -1,43 +1,23 @@
 
-
-const addBtn = document.getElementById('addBtn');
-const bookModal = document.getElementById('bookModal');
-const cancelBtn = document.querySelector('#cancelBtn');
 const detailsModal = document.querySelector('#modalBookDetails');
-const closeModalDetails = document.querySelector('#closeModalBookDetails');
-addBtn.addEventListener('click', showModal);
-// closeModalDetails.addEventListener('click', detailsHide);
-// bookModal.addEventListener('click', hideModal)
-cancelBtn.addEventListener('click', hideModal);
-
-function showModal() {
-	bookModal.style.display = 'block';
-}
-function hideModal() {
-	bookModal.style.display = 'none';
-}
+$("#addBtn").click(function (){
+	$("#bookModal").show();
+})
+$("#cancelBtn").click(function (){
+	$("#bookModal").hide();
+})
+$("#close-window").click(function (){
+	$("#modalBookDetails").hide();
+})
 
 function closeModalBox(){
 	detailsModal.style.display = 'none';
 }
-
-const newBookBtn = document.getElementById('newBookBtn');
-const txtTitle = document.getElementById('txtTitle');
-const txtPub = document.getElementById('txtPub');
-const txtPubYear = document.getElementById('txtPubYear');
-const txtPages = document.getElementById('txtPages');
-const txtCoverURL = document.getElementById('txtCoverURL');
 const bookRow = document.getElementById('bookRow');
 
-// new inputs starts
-const bukPrice = document.getElementById('bookPrice');
-const bukAuthor = document.getElementById('bookAuthor');
-const bukLanguge = document.getElementById('language');
-const bukCountry = document.getElementById('bookCountry');
-const bukExtract = document.getElementById('bookExtract');
-//const authoroBook = document.getElementById('authorofBook');
-// new inputs end
-newBookBtn.addEventListener('click', addToELibrary);
+$("#newBookBtn").click(function (){
+	addToELibrary();
+})
 
 function Book(title, pub, pages, yearPub, coverImgURL,bokPrice,bokAuthor,bokLanguage,bokCountry,bokExtract) {
 	this.title = title;
@@ -55,16 +35,16 @@ function Book(title, pub, pages, yearPub, coverImgURL,bokPrice,bokAuthor,bokLang
 
 function addToELibrary() {
 	if (validateInput()) {
-		let title = txtTitle.value;
-		let pub = txtPub.value;
-		let pages = txtPages.value;
-		let coverImgURL = txtCoverURL.value;
-		let yearPub = txtPubYear.value;
-		let price = bukPrice.value;
-		let author = bukAuthor.value;
-		let language = bukLanguge.value;
-		let country = bukCountry.value;
-		let extract = bukExtract.value;
+		let title = $("#txtTitle").val();
+		let pub =  $("#txtPub").val();
+		let pages = $("#txtPages").val();
+		let coverImgURL = $("#txtCoverURL").val();
+		let yearPub = $("#txtPubYear").val();
+		let price = $("#bookPrice").val();
+		let author = $("#bookAuthor").val();
+		let language = $("#language").val();
+		let country = $("#bookCountry").val();
+		let extract = $("#bookExtract").val();
 		let book = new Book(title, pub, pages, yearPub, coverImgURL,price,author,language,country,extract);
 		saveBook(book);
 		location.reload();
@@ -73,7 +53,7 @@ function addToELibrary() {
 	}
 }
 function validateInput() {
-	if (txtTitle.value == '' || txtPub.value == '' || txtPubYear.value == '' || txtPages.value == '') {
+	if ($("#txtTitle").val() == '' || $("#txtPub").val() == '' || $("#txtPages").val() == '' || $("#txtCoverURL").val() == '') {
 		return false;
 	}
 	return true;
@@ -102,13 +82,6 @@ function render() {
 				
 					<span class="all-buttons btn btn-default" onclick="deleteBook(${i})" >Delete</span>
 					</div>
-
-                    
-
-
-					
-				
-            
 			  </div>
 			</div>
                
@@ -148,7 +121,7 @@ function displayBookDetails(bookId){
 	  <h3>No Pages:${booksArray[bookId].pages} </h3>
 	  <h3>Country:${booksArray[bookId].country}</h3>
 	  <h3>Awards</h3>
-	  <span><i class="fas fa-window-close" onClick="closeModalBox()"></i></span>
+	  <span><i id="close-window" class="fas fa-window-close" onClick="closeModalBox()"></i></span>
 	</div>`;
 	  detailsModal.style.display = 'block';
   }

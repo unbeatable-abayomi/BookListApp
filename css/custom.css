@@ -118,7 +118,7 @@ no-padding-sides{
     height: 60vh;
     background-color: rgba(27, 9, 9, 0.822);
     z-index: 999;
-    padding: 10% 0;
+    padding: 5% 0;
     display: none; 
     border-radius: 20px; 
 }

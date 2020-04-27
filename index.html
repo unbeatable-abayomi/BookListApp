@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="./css/custom.css"/>
 </head>
-<body onload="render()">
+<body >
 
-<section class="container">
-    <div class="row">
+<section class="container-fluid">
+    <div class="row nav-bar-items p-3">
         <div class="col-md-4">
             
                 <h1 class="text-primary">eLibrary</h1>
@@ -87,10 +87,7 @@
 
  <section id="modalBookDetails" class="container" >
   <div class="row" id="bookDetailsContent">
-      <!-- <div class="col-md-12 text-center"> -->
-        
-       
-      <!-- </div> -->
+     
         
   </div>
 
@@ -98,12 +95,12 @@
 
 
 
-  <section class="container">
+  <section class="container mt-5">
       <h1 class="text-center text-primary">Available Books</h1>
-      <div class="row" id="bookRow">
+      <!-- <div class="row" id="bookRow">
  
       </div>
-     
+      -->
   </section>
 
   
@@ -130,25 +127,28 @@
 			<div class="row">
 			  <div class="col-md-6">
 			    <div class="book-cover">
-                  <img src="<%= message.coverImgURL %>"  onclick="displayBookDetails(${i})" class="card-img images img-fluid"/> 			 
-              <span class="all-buttons btn btn-default" onclick="displayBookDetails(${i})">Details</span>
-			  <button class="all-buttons favoriteButton mt-2" style="background-color:${booksArray[i].read}";>favourite</button>
+                  <img src="<%= message.coverImgURL %>"  class="card-img images img-fluid"/> 			 
+              <span class="all-buttons btn btn-default" id="<%=k%>" onclick="displayBookDetails(this.id)">Details</span>
+			  <button class="all-buttons favoriteButton mt-2" id="<%=k%>" onclick="makeFavorite(this.id)">favourite</button>
 		         </div>
 			  </div>
 			  <div class="col-md-6">
 			 
-                    <p style="color:${booksArray[i].read}";  class="card-title text-white">Title: <%= message.title %></p>
+                    <p class="card-title text-white">Title: <%= message.title %></p>
+                    
+                    <%= message.read > 0?"**":"" %>
                     <p class="card-title text-white" id="authorofBook">Author: <%= message.author %></p>
                     <h6 class="card-title text-white">Price: &#8358;<%= message.price %></h6>
 					<h6 class="card-title text-white">Published : <%= message.pub %></h6>
 					<div class="delete_details">
 				
-					<span class="all-buttons btn btn-default" onclick="deleteBook(${i})" >Delete</span>
+					<span class="all-buttons btn btn-default" id="<%=k%>" onclick="deleteBook(this.id)" >Delete</span>
 					</div>
 			  </div>
 			</div>
         </div>
     <% } %>
+    
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="ejs_production.js"></script>

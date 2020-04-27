@@ -4,7 +4,9 @@ body{
     background-image: linear-gradient(to left top, #0e121a, #101625, #131a31, #191d3c, #211f46);
 }
 
-
+.favorite{
+    background-color: yellow;
+}
 
 /* messages */
 .message {
@@ -21,11 +23,10 @@ body{
     .flex{
         display: flex;
     }
-    /* #list{
-        display: flex;
-    } */
 /* messages */
-
+.nav-bar-items{
+    background-color: thistle;
+}
 
 .images{
     height: 150px;

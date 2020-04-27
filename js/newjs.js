@@ -30,7 +30,7 @@ function Book(title, pub, pages, yearPub, coverImgURL,bokPrice,bokAuthor,bokLang
 	this.language=bokLanguage;
 	this.country=bokCountry;
 	this.extract=bokExtract;
-	this.read = "red";
+	this.read = "0";
 }
 
 function addToELibrary() {
@@ -69,7 +69,7 @@ function render() {
 			    <div class="book-cover">
 			  <img src="${booksArray[i].coverImgURL}" onclick="displayBookDetails(${i})" class="card-img images img-fluid">
 			  <span class="all-buttons btn btn-default" onclick="displayBookDetails(${i})">Details</span>
-			  <button class="all-buttons favoriteButton mt-2" style="background-color:${booksArray[i].read}";>fav</button>
+			  <button class="all-buttons favoriteButton mt-2" style="background-color:${booksArray[i].read}";>favourite</button>
 		         </div>
 			  </div>
 			  <div class="col-md-6">

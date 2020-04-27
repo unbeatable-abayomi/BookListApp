@@ -87,108 +87,71 @@
 
  <section id="modalBookDetails" class="container" >
   <div class="row" id="bookDetailsContent">
-      <div class="col-md-12 text-center">
+      <!-- <div class="col-md-12 text-center"> -->
         
        
-      </div>
+      <!-- </div> -->
         
   </div>
 
  </section>
 
-<!-- 
-
-
-
-<section class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 no-padding-sides">
-            <ul class="slider">
-                <li class="slide active">
-                    <div class="content">
-                        <h1>Exercise your brain</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
-                    </div>
-                </li>
-
-                <li class="slide">
-                  <div class="content">
-                      <h1>Build your future</h1>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
-                  </div>
-              </li>
-
-              <li class="slide">
-                  <div class="content">
-                      <h1>Achieve your goal</h1>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
-                  </div>
-              </li>
-
-              <li class="slide">
-                  <div class="content">
-                      <h1>Upskill yourself through books</h1>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius harum culpa delectus?</p>
-                  </div>
-              </li>
-
-            </ul>
-        </div>
-    </div>
-</section> -->
 
 
   <section class="container">
       <h1 class="text-center text-primary">Available Books</h1>
       <div class="row" id="bookRow">
-        <!-- <div class="col-md-4">
-            <div class="card">
-               <div class="book-cover">
-                <img src="images/bk1.jpg" class="card-img img-fluid"/>
-               </div>
-                <div class="card-body">
-                    <h3 class="card-title">Dreams from my father</h3>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
-                    <span class="btn btn-primary">Read Book</span>
-                </div>          
-              </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="book-cover">
-                    <img src="images/bk2.jpg" class="card-img img-fluid"/>
-                   </div>
-                <div class="card-body">
-                    <h3 class="card-title">Dreams from my father</h3>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
-                    <span class="btn btn-primary">Read Book</span>
-                </div>          
-              </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="book-cover">
-                    <img src="images/bk3.jpg" class="card-img img-fluid"/>
-                   </div>
-                <div class="card-body">
-                    <h3 class="card-title">Dreams from my father</h3>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, ratione.</p>
-                    <span class="btn btn-primary">Read Book</span>
-                </div>          
-              </div>
-        </div> -->
+ 
       </div>
      
   </section>
 
+  
 
-
-
-
-
-
-    <!-- <script src="./js/custom.js"></script> -->
+    <div class="container">
+        <div id="list" class="row">
+  
+        </div>
+    </div>
+       
     
+  
+ 
+  
+
+
+
+
+
+  <script id="template" type="text/ejs">
+    <% for (var k = 0; k < list.length; ++k) {
+        var message = list[k];  %>
+        <div class="col-md-4 all-details mt-3">
+			<div class="row">
+			  <div class="col-md-6">
+			    <div class="book-cover">
+                  <img src="<%= message.coverImgURL %>"  onclick="displayBookDetails(${i})" class="card-img images img-fluid"/> 			 
+              <span class="all-buttons btn btn-default" onclick="displayBookDetails(${i})">Details</span>
+			  <button class="all-buttons favoriteButton mt-2" style="background-color:${booksArray[i].read}";>favourite</button>
+		         </div>
+			  </div>
+			  <div class="col-md-6">
+			 
+                    <p style="color:${booksArray[i].read}";  class="card-title text-white">Title: <%= message.title %></p>
+                    <p class="card-title text-white" id="authorofBook">Author: <%= message.author %></p>
+                    <h6 class="card-title text-white">Price: &#8358;<%= message.price %></h6>
+					<h6 class="card-title text-white">Published : <%= message.pub %></h6>
+					<div class="delete_details">
+				
+					<span class="all-buttons btn btn-default" onclick="deleteBook(${i})" >Delete</span>
+					</div>
+			  </div>
+			</div>
+        </div>
+    <% } %>
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="ejs_production.js"></script>
     <script src="./js/jquery.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/newjs.js"></script>

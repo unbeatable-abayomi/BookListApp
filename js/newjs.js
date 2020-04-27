@@ -1,3 +1,7 @@
+// let ejs = require('ejs'),
+// people = ['geddy', 'neil', 'alex'],
+// html = ejs.render('<%= people.join(", "); %>', {people: people});
+
 
 const detailsModal = document.querySelector('#modalBookDetails');
 $("#addBtn").click(function (){
@@ -58,6 +62,7 @@ function validateInput() {
 	}
 	return true;
 }
+/*
 function render() {
 	if (localStorage.getItem('books') != null) {
 		let booksArray = JSON.parse(localStorage.getItem('books'));
@@ -93,6 +98,16 @@ function render() {
 		console.log('No books yet');
 	}
 }
+ */
+$(function() {
+    var template = new EJS({
+        text: $('#template').html()
+	});
+	let booksArray = JSON.parse(localStorage.getItem('books'));
+	console.log(booksArray);
+    $('#list').html(template.render({list:booksArray}));
+});
+
 function saveBook(bookObj) {
 	let booksArray = [];
 	if (localStorage.getItem('books') == null) {

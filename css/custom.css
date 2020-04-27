@@ -5,6 +5,28 @@ body{
 }
 
 
+
+/* messages */
+.message {
+    color: white;
+    border-bottom:solid 1px #ccc;
+    width: 250px;
+    padding: 5px; }
+.message p { margin: 0.5em 0; }
+.message.unread { font-weight:bold; }    
+.message .date { 
+    float: right; 
+    font-style: italic;
+    color: #999; }
+    .flex{
+        display: flex;
+    }
+    /* #list{
+        display: flex;
+    } */
+/* messages */
+
+
 .images{
     height: 150px;
 }
